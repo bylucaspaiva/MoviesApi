@@ -1,6 +1,15 @@
-﻿namespace MoviesApi.Controllers
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace MoviesApi.Controllers
 {
-    public class MovieController
+    [ApiController]
+    [Route("[controller]")]
+    public class MovieController : ControllerBase
     {
+        private statit List<Movie> movies = new List<Movie>();
+        public void AddMovie(Movie movie)
+        {
+
+        }
     }
 }
