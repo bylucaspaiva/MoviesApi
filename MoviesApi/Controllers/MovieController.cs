@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MoviesApi.Models;
 
 namespace MoviesApi.Controllers
 {
@@ -6,9 +7,13 @@ namespace MoviesApi.Controllers
     [Route("[controller]")]
     public class MovieController : ControllerBase
     {
-        private statit List<Movie> movies = new List<Movie>();
-        public void AddMovie(Movie movie)
+        private static List<Movie> movies = new List<Movie>();
+        [HttpPost]
+        public void AddMovie([FromBody] Movie movie)
         {
+            movies.Add(movie);
+            Console.WriteLine(movie.Duration);
+            Console.WriteLine(movie.Title);
 
         }
     }
