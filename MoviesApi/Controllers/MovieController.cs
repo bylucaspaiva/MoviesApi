@@ -14,7 +14,12 @@ namespace MoviesApi.Controllers
             movies.Add(movie);
             Console.WriteLine(movie.Duration);
             Console.WriteLine(movie.Title);
+        }
 
+        [HttpGet]
+        public List<Movie> getMovies()
+        {
+            return movies;
         }
     }
 }
