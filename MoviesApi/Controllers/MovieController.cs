@@ -20,6 +20,7 @@ namespace MoviesApi.Controllers
         public IActionResult AddMovie([FromBody] Movie movie)
         {
             _context.Movies.Add(movie);
+            _context.SaveChanges();
             return CreatedAtAction(nameof(GetMovieById), new {id = movie.Id}, movie);
         }
 
