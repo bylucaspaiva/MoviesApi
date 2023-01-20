@@ -17,13 +17,19 @@ namespace MoviesApi.Controllers
             movies.Add(movie);
             Console.WriteLine(movie.Duration);
             Console.WriteLine(movie.Title);
-            Movie.Id = id++;
+            movie.Id = id++;
         }
 
         [HttpGet]
-        public IEnumerable<Movie> getMovies()
+        public IEnumerable<Movie> GetMovies([FromQuery] int skip = 0,[FromQuery] int take = 20)
         {
-            return movies;
+            return movies.Skip(skip).Take(take)
+;       }
+
+        [HttpGet("{id}")]
+        public Movie? GetMoviesById(int id)
+        {
+            return movies.FirstOrDefault(movie => movie.Id == id);
         }
     }
 }
