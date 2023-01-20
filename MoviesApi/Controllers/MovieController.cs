@@ -15,9 +15,8 @@ namespace MoviesApi.Controllers
         public void AddMovie([FromBody] Movie movie)
         {
             movies.Add(movie);
-            Console.WriteLine(movie.Duration);
-            Console.WriteLine(movie.Title);
             movie.Id = id++;
+            return CreatedAtAction(nameof(GetMovieById), new {id = movie.Id}, movie);
         }
 
         [HttpGet]
@@ -27,7 +26,7 @@ namespace MoviesApi.Controllers
 ;       }
 
         [HttpGet("{id}")]
-        public IActionResult GetMoviesById(int id)
+        public IActionResult GetMovieById(int id)
         {
             var movie = movies.FirstOrDefault(movie => movie.Id == id);
             return movie != null ? Ok(movie) : NotFound();
