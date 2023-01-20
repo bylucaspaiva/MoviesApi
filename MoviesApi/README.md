@@ -4,3 +4,4 @@
 
 - EntityFrameworkCore
 - EntityFrameworkCore.Tools
+- Pomelo.EntityFrameworkCore.MySQL
