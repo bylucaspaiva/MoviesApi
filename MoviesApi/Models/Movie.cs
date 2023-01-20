@@ -4,6 +4,8 @@ namespace MoviesApi.Models;
 
 public class Movie
 {
+    [Key]
+    [Required]
     public int Id { get; set; }
     [Required(ErrorMessage = "The title is required.")]
     public string Title {  get; set; }
