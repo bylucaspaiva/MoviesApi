@@ -12,7 +12,7 @@ namespace MoviesApi.Controllers
         private static int id = 0;
 
         [HttpPost]
-        public void AddMovie([FromBody] Movie movie)
+        public IActionResult AddMovie([FromBody] Movie movie)
         {
             movies.Add(movie);
             movie.Id = id++;
