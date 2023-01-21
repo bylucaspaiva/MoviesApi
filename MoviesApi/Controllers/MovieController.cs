@@ -41,5 +41,11 @@ namespace MoviesApi.Controllers
             var movie = _context.Movies.FirstOrDefault(movie => movie.Id == id);
             return movie != null ? Ok(movie) : NotFound();
         }
+
+        [HttpPut]
+        public IActionResult UpdateMovie(int id, )
+        {
+
+        }
     }
 }
