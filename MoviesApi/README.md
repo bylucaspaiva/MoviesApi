@@ -18,6 +18,7 @@
 - describe movies;
 
 ## How to use NewtonSoft:
+To make patch requests
 
 	[   
         {
