@@ -5,6 +5,7 @@
 - EntityFrameworkCore
 - EntityFrameworkCore.Tools
 - Pomelo.EntityFrameworkCore.MySQL
+- Microsoft.AspNetCore.Mvc.NewtonsoftJson
 
 ## Commands in nuget console
 - Add-Migration CreateTableMovie
