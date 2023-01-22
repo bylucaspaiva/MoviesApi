@@ -31,16 +31,18 @@ namespace MoviesApi.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Movie> GetMovies([FromQuery] int skip = 0,[FromQuery] int take = 20)
+        public IEnumerable<ReadMovieDto> GetMovies([FromQuery] int skip = 0,[FromQuery] int take = 20)
         {
-            return _context.Movies.Skip(skip).Take(take)
+            return _mapper.Map<List<ReadMovieDto>>(_context.Movies.Skip(skip).Take(take));
 ;       }
 
         [HttpGet("{id}")]
         public IActionResult GetMovieById(int id)
         {
             var movie = _context.Movies.FirstOrDefault(movie => movie.Id == id);
-            return movie != null ? Ok(movie) : NotFound();
+            if (movie == null) return NotFound();
+            var movieDto = _mapper.Map<ReadMovieDto>(movie);
+            return Ok(movieDto);
         }
 
         [HttpPut("{id}")]
