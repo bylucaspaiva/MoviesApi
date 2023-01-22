@@ -22,6 +22,7 @@ namespace MoviesApi.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
         public IActionResult AddMovie([FromBody] CreateMovieDto movieDto)
         {
             Movie movie = _mapper.Map<Movie>(movieDto);
