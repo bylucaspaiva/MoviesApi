@@ -7,7 +7,7 @@
 - Pomelo.EntityFrameworkCore.MySQL
 - Microsoft.AspNetCore.Mvc.NewtonsoftJson
 
-## Commands in nuget console
+## Commands in nuget console 
 - Add-Migration CreateTableMovie
 - Update-Database
 
@@ -16,3 +16,13 @@
 - use movie;
 - show tables;
 - describe movies;
+
+## How to use NewtonSoft:
+
+	[   
+        {
+            "op": "replace",
+            "path": "Title",
+            "value": "Avatar"
+        }
+    ]

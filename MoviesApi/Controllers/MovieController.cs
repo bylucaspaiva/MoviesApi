@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using MoviesApi.Data;
@@ -58,7 +59,7 @@ namespace MoviesApi.Controllers
 
 
         [HttpPatch("{id}")]
-        public IActionResult UpdateMoviePatch(int id, [FromBody] UpdateMovieDto movieDto)
+        public IActionResult UpdateMoviePatch(int id, [FromBody] JsonPatchDocument<UpdateMovieDto> patch)
         {
             var movie = _context.Movies.FirstOrDefault(movie => movie.Id == id);
             if (movie == null)
@@ -66,7 +67,16 @@ namespace MoviesApi.Controllers
                 return NotFound();
             }
 
-            _mapper.Map(movieDto, movie);
+            var movieToUpdate = _mapper.Map<UpdateMovieDto>(movie);
+
+            patch.ApplyTo(movieToUpdate, ModelState);
+
+            if(!TryValidateModel(movieToUpdate))
+            {
+                return ValidationProblem(ModelState);
+            }
+
+            _mapper.Map(movieToUpdate, movie);
             _context.SaveChanges();
             return NoContent();
         }
