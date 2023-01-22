@@ -1,4 +1,7 @@
 ﻿# MoviesApi
+ A simple api example with .net 6.
+ Here you can see how connect an api to a database and make requests to it.
+ And can see how to document automatically an aplication with Swegger as well.
 
 ## Packages 
 
