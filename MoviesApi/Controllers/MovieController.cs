@@ -55,5 +55,20 @@ namespace MoviesApi.Controllers
             _context.SaveChanges();
             return NoContent();
         }
+
+
+        [HttpPatch("{id}")]
+        public IActionResult UpdateMoviePatch(int id, [FromBody] UpdateMovieDto movieDto)
+        {
+            var movie = _context.Movies.FirstOrDefault(movie => movie.Id == id);
+            if (movie == null)
+            {
+                return NotFound();
+            }
+
+            _mapper.Map(movieDto, movie);
+            _context.SaveChanges();
+            return NoContent();
+        }
     }
 }
